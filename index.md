@@ -169,29 +169,14 @@ the official REST API consolidates these into **8 core Datastreams**:
 
 | Function | Datastream ID | Description |
 |:---|:---|:---|
-| [`senace_cartera_proyectos()`](file:///d:/senaceR/R/datasets.R#L11) | `CarteraProyectos` | Sustainable Investment Project Portfolio & evaluation status |
-| [`senace_consultoras_ambientales()`](file:///d:/senaceR/R/datasets.R#L24) | `ConsultorasAmbientales` | Authorized environmental consulting firms across all subsectors |
-| [`senace_gastos_especifica()`](file:///d:/senaceR/R/datasets.R#L37) | `GastoEspecifica` | Daily and annual budget expenditure by detailed classifier |
-| [`senace_gastos_fuente()`](file:///d:/senaceR/R/datasets.R#L50) | `GastoFuente` | Budget expenditure summarized by funding source |
-| [`senace_gastos_generica()`](file:///d:/senaceR/R/datasets.R#L63) | `GastoGenerica` | Budget expenditure grouped by generic classifier |
-| [`senace_solicitudes_acceso()`](file:///d:/senaceR/R/datasets.R#L76) | `SolicitudAcceso` | Public information access requests and status |
-| [`senace_visitas()`](file:///d:/senaceR/R/datasets.R#L89) | `Visitas` | Institutional visitor and meeting records |
-| [`senace_reclamos()`](file:///d:/senaceR/R/datasets.R#L102) | `Reclamos` | Complaints and claims submitted by the public |
-
-------------------------------------------------------------------------
-
-## Updating Local Data Snapshots
-
-For developers maintaining `senaceR`, local `.rda` files in `data/` can
-be refreshed by setting your `SENACE_API_KEY` and running the script:
-
-``` r
-
-source("data-raw/update_packaged_data.R")
-```
-
-This script downloads the latest datastreams and regenerates
-`xz`-compressed local datasets.
+| [`senace_cartera_proyectos()`](https://paulesantos.github.io/senaceR/reference/senace_cartera_proyectos.md) | `CarteraProyectos` | Sustainable Investment Project Portfolio & evaluation status |
+| [`senace_consultoras_ambientales()`](https://paulesantos.github.io/senaceR/reference/senace_consultoras_ambientales.md) | `ConsultorasAmbientales` | Authorized environmental consulting firms across all subsectors |
+| [`senace_gastos_especifica()`](https://paulesantos.github.io/senaceR/reference/senace_gastos_especifica.md) | `GastoEspecifica` | Daily and annual budget expenditure by detailed classifier |
+| [`senace_gastos_fuente()`](https://paulesantos.github.io/senaceR/reference/senace_gastos_fuente.md) | `GastoFuente` | Budget expenditure summarized by funding source |
+| [`senace_gastos_generica()`](https://paulesantos.github.io/senaceR/reference/senace_gastos_generica.md) | `GastoGenerica` | Budget expenditure grouped by generic classifier |
+| [`senace_solicitudes_acceso()`](https://paulesantos.github.io/senaceR/reference/senace_solicitudes_acceso.md) | `SolicitudAcceso` | Public information access requests and status |
+| [`senace_visitas()`](https://paulesantos.github.io/senaceR/reference/senace_visitas.md) | `Visitas` | Institutional visitor and meeting records |
+| [`senace_reclamos()`](https://paulesantos.github.io/senaceR/reference/senace_reclamos.md) | `Reclamos` | Complaints and claims submitted by the public |
 
 ------------------------------------------------------------------------
 
