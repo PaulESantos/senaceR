@@ -1,0 +1,27 @@
+Package: senaceR
+Title: Programmatic Access to SENACE Open Data
+Version: 0.1.0
+Authors@R: c(
+    person("Paul Efren", "Santos Andrade",
+    email = "paulfrenes@gmail.com",
+    role = c("aut", "cre", "cph"))
+  )
+Description: An R interface for the REST API of the SENACE Open Data Portal
+    (National Service for Environmental Certification of Sustainable Investments).
+    Download current datasets with a personal API key or use the bundled local
+    snapshots for offline work.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Depends:
+    R (>= 4.0.0)
+Imports:
+    httr2,
+    jsonlite,
+    tibble
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+LazyData: true
+LazyDataCompression: xz
+Config/roxygen2/version: 8.0.0

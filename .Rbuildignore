@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.agents$
+^.*\.metadata\.json$
+^data-raw$
+^test_.*\.R$
