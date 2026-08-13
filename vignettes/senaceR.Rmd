@@ -1,0 +1,121 @@
+---
+title: "Getting Started with senaceR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with senaceR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+The `senaceR` package provides programmatic access to open data published by SENACE (*Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles*), the national authority responsible for evaluating detailed environmental impact assessments for major investment projects in Peru.
+
+Through its REST API, SENACE exposes datasets covering environmental certification portfolios, registered consulting firms, institutional visits, public information requests, and budget execution.
+
+`senaceR` simplifies data access by:
+
+1. Handling API authentication (`auth_key`).
+2. Formatting JSON API responses into tidy R `tibble` objects.
+3. Bundling local data snapshots for offline work and automatic fallback operation.
+
+---
+
+## Installation & Setup
+
+Install `senaceR` from GitHub:
+
+```r
+# install.packages("remotes")
+remotes::install_github("PaulESantos/senaceR")
+```
+
+Load the package in your session:
+
+```{r setup}
+library(senaceR)
+```
+
+### Configuring your API Key
+
+To access live data from the SENACE API, register for a free account at [https://datosabiertos.senace.gob.pe](https://datosabiertos.senace.gob.pe) and copy your personal API key (`auth_key`).
+
+You can set your API key for the current R session:
+
+```r
+senace_set_key("YOUR_PERSONAL_API_KEY")
+```
+
+Or store it permanently in your `.Renviron` file:
+
+```text
+SENACE_API_KEY=YOUR_PERSONAL_API_KEY
+```
+
+---
+
+## Discovering Datastreams
+
+To view all official datastreams available through the API:
+
+```{r list-datasets}
+datasets <- senace_list_datasets()
+datasets
+```
+
+---
+
+## Accessing Datastreams
+
+`senaceR` provides dedicated functions for each datastream. For offline exploration or when network access is unavailable, pass `offline = TRUE`:
+
+### 1. Sustainable Investment Project Portfolio
+
+Retrieve the complete status of environmental impact studies evaluated by SENACE:
+
+```{r cartera}
+proyectos <- senace_cartera_proyectos(offline = TRUE)
+head(proyectos)
+```
+
+### 2. Environmental Consulting Firms Register
+
+Retrieve authorized environmental consulting firms across all subsectors (Energy, Mining, Transport, Agriculture, etc.):
+
+```{r consultoras}
+consultoras <- senace_consultoras_ambientales(offline = TRUE)
+head(consultoras)
+```
+
+### 3. Public Information Access Requests
+
+Track transparency and public information requests submitted to SENACE:
+
+```{r solicitudes}
+solicitudes <- senace_solicitudes_acceso(offline = TRUE)
+head(solicitudes)
+```
+
+---
+
+## Resilient Offline Fallback
+
+If you query a live dataset (`offline = FALSE`) but the SENACE API server is down or unreachable, `senaceR` will automatically issue a warning and load the pre-packaged offline snapshot:
+
+```r
+# Automatic fallback if live API fails
+proyectos_live <- senace_cartera_proyectos()
+```
+
+---
+
+## Conclusion
+
+`senaceR` streamlines environmental data science workflows in Peru by bridging SENACE's open data portal directly to R data structures. For more details on datastream architecture and offline snapshot management, see `vignette("datasets")`.

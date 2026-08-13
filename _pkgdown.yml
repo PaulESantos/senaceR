@@ -1,4 +1,80 @@
 url: https://paulesantos.github.io/senaceR/
+
 template:
   bootstrap: 5
+  bslib:
+    bg: "#ffffff"
+    fg: "#212121"
+    primary: "#005193"
+    secondary: "#6bb286"
+    success: "#2e8b57"
+    info: "#3b7dc1"
+    warning: "#e79458"
+    danger: "#e7585b"
+    light: "#f8f9fa"
+    dark: "#0d3c61"
+    base_font:
+      google: "Open Sans"
+    heading_font:
+      google: "Open Sans"
+    code_font:
+      google: "Fira Code"
 
+navbar:
+  title: "senaceR"
+  type: primary
+  structure:
+    left: [intro, reference, articles, news]
+    right: [github]
+  components:
+    intro:
+      text: "Get started"
+      href: articles/senaceR.html
+    articles:
+      text: "Articles"
+      menu:
+        - text: "Getting Started with senaceR"
+          href: articles/senaceR.html
+        - text: "Exploring SENACE Datastreams & Offline Mode"
+          href: articles/datasets.html
+    reference:
+      text: "Reference"
+      href: reference/index.html
+    news:
+      text: "Changelog"
+      href: news/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/PaulESantos/senaceR
+      aria-label: GitHub
+
+reference:
+  - title: "API Client & Authentication"
+    desc: "Functions for API key management and direct HTTP datastream requests."
+    contents:
+      - senace_set_key
+      - senace_api_key
+      - senace_get_data
+      - senace_list_datasets
+  - title: "Datastream Helpers"
+    desc: "Convenience functions for fetching SENACE datasets (with offline support)."
+    contents:
+      - senace_cartera_proyectos
+      - senace_consultoras_ambientales
+      - senace_gastos_especifica
+      - senace_gastos_fuente
+      - senace_gastos_generica
+      - senace_solicitudes_acceso
+      - senace_visitas
+      - senace_reclamos
+  - title: "Bundled Offline Datasets"
+    desc: "Packaged local data objects available for offline analysis."
+    contents:
+      - cartera_proyectos_data
+      - consultoras_ambientales_data
+      - gasto_especifica_data
+      - gasto_fuente_data
+      - gasto_generica_data
+      - solicitud_acceso_data
+      - visitas_data
+      - reclamos_data

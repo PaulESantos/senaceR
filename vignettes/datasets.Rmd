@@ -1,0 +1,78 @@
+---
+title: "Exploring SENACE Datastreams & Offline Mode"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exploring SENACE Datastreams & Offline Mode}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+This article explains the dataset architecture of the SENACE Open Data Portal, how web portal views map to REST API datastreams, and how `senaceR` manages offline data snapshots.
+
+```{r setup}
+library(senaceR)
+```
+
+---
+
+## Web Portal Catalog vs. REST API Datastreams
+
+Visitors to the [SENACE Open Data Portal](https://datosabiertos.senace.gob.pe) will notice **22 dataset items** in the web catalog. However, the official REST API consolidates these into **8 core Datastreams**:
+
+| Web Portal Catalog Category | Web Items | API Datastream | `senaceR` Helper Function |
+| :--- | :---: | :--- | :--- |
+| Certificación Ambiental | 3 | `CarteraProyectos` | `senace_cartera_proyectos()` |
+| Registros Ambientales | 10 | `ConsultorasAmbientales` | `senace_consultoras_ambientales()` |
+| Transparencia y Atención | 3 | `SolicitudAcceso`, `Visitas`, `Reclamos` | `senace_solicitudes_acceso()`, `senace_visitas()`, `senace_reclamos()` |
+| Planeamiento y Presupuesto | 3 | `GastoEspecifica`, `GastoFuente`, `GastoGenerica` | `senace_gastos_especifica()`, `senace_gastos_fuente()`, `senace_gastos_generica()` |
+
+### Why the difference?
+
+1. **Subdivided Web Views:** On the portal interface, SENACE subdivides datasets for interactive web browsing. For example, *Consultoras Ambientales* is split into 10 separate pages (one per subsector like Mining, Electricity, Agriculture). In contrast, the REST API delivers the **complete master dataset** in a single query (`ConsultorasAmbientales`).
+2. **Filtered Project Views:** The portal displays separate cards for Approved, In Evaluation, and Disapproved projects. The API datastream `CarteraProyectos` returns all projects across all evaluation states.
+3. **Web-Only Displays:** A few web pages (*Especialistas*, *Participación Ciudadana*, *Viáticos*) are static portal displays without exposed public API endpoints.
+
+---
+
+## Complete Datastream Reference
+
+`senaceR` provides dedicated functions for each of the 8 REST API datastreams:
+
+```{r DatasetsTable, echo = FALSE}
+ds <- senace_list_datasets()
+knitr::kable(ds, col.names = c("Datastream ID", "Title", "Description"))
+```
+
+---
+
+## Working Offline & Resilient Data Access
+
+`senaceR` incorporates pre-packaged, compressed snapshots (`.rda`) of all 8 datastreams in `data/`.
+
+### Offline Mode (`offline = TRUE`)
+
+If you are working without an internet connection or require reproducible script execution, pass `offline = TRUE`:
+
+```{r offline-example}
+# Retrieve packaged snapshots without network calls
+cartera <- senace_cartera_proyectos(offline = TRUE)
+dim(cartera)
+
+consultoras <- senace_consultoras_ambientales(offline = TRUE)
+dim(consultoras)
+```
+
+### Automatic Fallback
+
+When `offline = FALSE` (the default), `senaceR` attempts to fetch live data from the SENACE API. If the API endpoint is unreachable or returns an HTTP error, `senaceR` issues an informative warning and loads the bundled local snapshot so your analysis can continue uninterrupted.
+
+
