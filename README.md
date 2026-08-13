@@ -177,6 +177,30 @@ the official REST API consolidates these into **8 core Datastreams**:
 
 ------------------------------------------------------------------------
 
-## License
+## License & Data Attribution
 
-This project is licensed under the [MIT License](LICENSE).
+### Software License
+
+The `senaceR` package source code is licensed under the [MIT
+License](LICENSE).
+
+### Data Source & Terms of Use
+
+The datasets accessed through this package are published by the
+**Servicio Nacional de Certificación Ambiental para las Inversiones
+Sostenibles (SENACE)** of Peru via its official Open Data Portal
+(<https://datosabiertos.senace.gob.pe>).
+
+In accordance with Peru’s National Open Data Strategy (*Decreto Supremo
+N° 016-2017-PCM*), public sector open data is available for free public
+use, redistribution, and analysis, requiring proper source attribution
+to SENACE.
+
+### Citing `senaceR` and SENACE Data
+
+To cite `senaceR` or the underlying SENACE datasets in academic research
+or reports, run:
+
+``` r
+citation("senaceR")
+```

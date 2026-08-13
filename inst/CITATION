@@ -1,0 +1,31 @@
+citHeader("To cite senaceR or the SENACE open data in publications, please use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "senaceR: Programmatic Access to SENACE Open Data",
+  author   = personList(as.person("Paul Efren Santos Andrade")),
+  year     = "2026",
+  note     = "R package version 0.1.0",
+  url      = "https://paulesantos.github.io/senaceR/",
+  textVersion = paste(
+    "Santos Andrade, P. E. (2026).",
+    "senaceR: Programmatic Access to SENACE Open Data.",
+    "R package version 0.1.0.",
+    "URL: https://paulesantos.github.io/senaceR/"
+  )
+)
+
+citEntry(
+  entry    = "Misc",
+  title    = "Portal de Datos Abiertos del SENACE",
+  author   = personList(as.person("Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles - SENACE")),
+  year     = "2026",
+  organization = "SENACE, Ministerio del Ambiente, Perú",
+  url      = "https://datosabiertos.senace.gob.pe/",
+  textVersion = paste(
+    "Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles - SENACE. (2026).",
+    "Portal de Datos Abiertos del SENACE [Data set].",
+    "Ministerio del Ambiente, Perú.",
+    "URL: https://datosabiertos.senace.gob.pe/"
+  )
+)
