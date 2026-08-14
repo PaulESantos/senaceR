@@ -18,3 +18,6 @@ A tibble.
 \description{
 Downloads the SENACE project portfolio or retrieves its bundled local snapshot.
 }
+\examples{
+senace_cartera_proyectos(offline = TRUE)
+}

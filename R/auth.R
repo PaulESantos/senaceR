@@ -6,9 +6,7 @@
 #' @return Invisibly, `NULL`.
 #' @export
 #' @examples
-#' \dontrun{
-#' senace_set_key("your_api_key")
-#' }
+#' senace_set_key("my_api_key")
 senace_set_key <- function(key) {
   if (missing(key) || !is.character(key) || length(key) != 1 || nchar(key) == 0) {
     stop("The API key must be a non-empty character string.", call. = FALSE)
@@ -26,6 +24,9 @@ senace_set_key <- function(key) {
 #'
 #' @return A character string containing the SENACE API key.
 #' @export
+#' @examples
+#' senace_set_key("my_api_key")
+#' senace_api_key()
 senace_api_key <- function() {
   # 1. Look in the environment variable.
   key <- Sys.getenv("SENACE_API_KEY")

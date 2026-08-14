@@ -19,3 +19,6 @@ A tibble.
 Downloads public information access requests or retrieves their bundled local
 snapshot.
 }
+\examples{
+senace_solicitudes_acceso(offline = TRUE)
+}

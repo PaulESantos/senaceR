@@ -35,15 +35,17 @@ It retrieves official REST API datastreams directly into tidy R data structures 
 
 ## Installation
 
-You can install the development version of `senaceR` directly from GitHub or from a local source repository:
+You can install the released version of `senaceR` from CRAN with:
 
 ```r
-# Install from GitHub
-# install.packages("remotes")
-remotes::install_github("PaulESantos/senaceR")
+# install.packages("senaceR")
+```
 
-# Or install from local directory
-devtools::install("d:/senaceR")
+Or install the development version from GitHub:
+
+```r
+# install.packages("pak")
+pak::pak("PaulESantos/senaceR")
 ```
 
 ---
@@ -88,7 +90,7 @@ SENACE_API_KEY=your_api_key_here
 
 View all official datastreams provided by the SENACE REST API:
 
-```{r list-datasets, eval = FALSE}
+```{r list-datasets}
 library(senaceR)
 
 datasets <- senace_list_datasets()
@@ -99,7 +101,7 @@ print(datasets)
 
 Once your API key is configured, use helper functions to fetch live data:
 
-```{r live-data, eval = FALSE}
+```{r live-data}
 # Retrieve the Sustainable Investment Project Portfolio
 proyectos <- senace_cartera_proyectos()
 head(proyectos)
@@ -117,7 +119,7 @@ head(solicitudes)
 
 To work offline or perform fast exploratory analysis without network requests, set `offline = TRUE`:
 
-```{r offline-data, eval = FALSE}
+```{r offline-data}
 # Load packaged project portfolio snapshot
 proyectos_offline <- senace_cartera_proyectos(offline = TRUE)
 
@@ -168,7 +170,7 @@ In accordance with Peru's National Open Data Strategy (*Decreto Supremo N° 016-
 ### Citing `senaceR` and SENACE Data
 To cite `senaceR` or the underlying SENACE datasets in academic research or reports, run:
 
-```r
+```{r}
 citation("senaceR")
 ```
 

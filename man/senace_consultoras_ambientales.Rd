@@ -19,3 +19,6 @@ A tibble.
 Downloads the register of environmental consulting firms authorized by SENACE
 or retrieves its bundled local snapshot.
 }
+\examples{
+senace_consultoras_ambientales(offline = TRUE)
+}

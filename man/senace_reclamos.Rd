@@ -19,3 +19,6 @@ A tibble.
 Downloads complaints and claims submitted by the public or retrieves their
 bundled local snapshot.
 }
+\examples{
+senace_reclamos(offline = TRUE)
+}

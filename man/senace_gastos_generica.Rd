@@ -19,3 +19,6 @@ A tibble.
 Downloads budget expenditure by generic classifier or retrieves its bundled
 local snapshot.
 }
+\examples{
+senace_gastos_generica(offline = TRUE)
+}

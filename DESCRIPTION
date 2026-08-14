@@ -6,7 +6,7 @@ Authors@R: c(
     email = "paulfrenes@gmail.com",
     role = c("aut", "cre", "cph"))
   )
-Description: Provides an R interface for the REST API of the SENACE Open Data 
+Description: Provides an 'R' interface for the REST API of the 'SENACE' Open Data 
     Portal (National Service for Environmental Certification of Sustainable 
     Investments) in Peru <https://datosabiertos.senace.gob.pe>. Allows users to 
     download current datasets programmatically using a personal API key or 

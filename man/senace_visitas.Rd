@@ -19,3 +19,6 @@ A tibble.
 Downloads records of visits to SENACE offices or retrieves their bundled local
 snapshot.
 }
+\examples{
+senace_visitas(offline = TRUE)
+}

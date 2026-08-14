@@ -19,3 +19,6 @@ A tibble.
 Downloads budget expenditure summarized by funding source or retrieves its
 bundled local snapshot.
 }
+\examples{
+senace_gastos_fuente(offline = TRUE)
+}

@@ -14,3 +14,7 @@ Looks for an API key in the \code{SENACE_API_KEY} environment variable and then
 in the \code{senace.api_key} global option. An informative error is raised if no
 key is available.
 }
+\examples{
+senace_set_key("my_api_key")
+senace_api_key()
+}

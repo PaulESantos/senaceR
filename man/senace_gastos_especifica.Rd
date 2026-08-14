@@ -19,3 +19,6 @@ A tibble.
 Downloads detailed budget expenditure data or retrieves its bundled local
 snapshot.
 }
+\examples{
+senace_gastos_especifica(offline = TRUE)
+}

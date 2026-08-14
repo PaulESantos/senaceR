@@ -8,6 +8,8 @@
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_cartera_proyectos(offline = TRUE)
 senace_cartera_proyectos <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("CarteraProyectos", "cartera_proyectos_data", api_key, offline)
 }
@@ -21,6 +23,8 @@ senace_cartera_proyectos <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_consultoras_ambientales(offline = TRUE)
 senace_consultoras_ambientales <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("ConsultorasAmbientales", "consultoras_ambientales_data", api_key, offline)
 }
@@ -34,6 +38,8 @@ senace_consultoras_ambientales <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_gastos_especifica(offline = TRUE)
 senace_gastos_especifica <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("GastoEspecifica", "gasto_especifica_data", api_key, offline)
 }
@@ -47,6 +53,8 @@ senace_gastos_especifica <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_gastos_fuente(offline = TRUE)
 senace_gastos_fuente <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("GastoFuente", "gasto_fuente_data", api_key, offline)
 }
@@ -60,6 +68,8 @@ senace_gastos_fuente <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_gastos_generica(offline = TRUE)
 senace_gastos_generica <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("GastoGenerica", "gasto_generica_data", api_key, offline)
 }
@@ -73,6 +83,8 @@ senace_gastos_generica <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_solicitudes_acceso(offline = TRUE)
 senace_solicitudes_acceso <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("SolicitudAcceso", "solicitud_acceso_data", api_key, offline)
 }
@@ -86,6 +98,8 @@ senace_solicitudes_acceso <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_visitas(offline = TRUE)
 senace_visitas <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("Visitas", "visitas_data", api_key, offline)
 }
@@ -99,6 +113,8 @@ senace_visitas <- function(api_key = NULL, offline = FALSE) {
 #'
 #' @return A tibble.
 #' @export
+#' @examples
+#' senace_reclamos(offline = TRUE)
 senace_reclamos <- function(api_key = NULL, offline = FALSE) {
   get_package_dataset("Reclamos", "reclamos_data", api_key, offline)
 }

@@ -16,7 +16,5 @@ Invisibly, \code{NULL}.
 Stores a SENACE API key in the environment of the current R session.
 }
 \examples{
-\dontrun{
-senace_set_key("your_api_key")
-}
+senace_set_key("my_api_key")
 }
