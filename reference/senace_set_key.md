@@ -21,7 +21,6 @@ Invisibly, `NULL`.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-senace_set_key("your_api_key")
-} # }
+senace_set_key("my_api_key")
+#> SENACE API key stored in the session environment.
 ```

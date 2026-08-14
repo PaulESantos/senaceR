@@ -78,14 +78,13 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of <code>senaceR</code> directly from GitHub or from a local source repository:</p>
+<p>You can install the released version of <code>senaceR</code> from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install from GitHub</span></span>
-<span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"PaulESantos/senaceR"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Or install from local directory</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"d:/senaceR"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("senaceR")</span></span></code></pre></div>
+<p>Or install the development version from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"PaulESantos/senaceR"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
@@ -101,7 +100,7 @@
 <li>Dirígete a la sección de tu perfil o documentación de API y copia tu clave personal (<code>auth_key</code>).</li>
 <li>Configúrala en tu sesión de R:</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/senaceR" class="external-link">senaceR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Configurar clave para la sesión actual</span></span>
@@ -111,7 +110,7 @@
 <h3 id="english">English<a class="anchor" aria-label="anchor" href="#english"></a>
 </h3>
 <p>Register at <a href="https://datosabiertos.senace.gob.pe" class="external-link uri">https://datosabiertos.senace.gob.pe</a>, retrieve your personal API key (<code>auth_key</code>), and configure it in your R session:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/senaceR" class="external-link">senaceR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Set API key for current session</span></span>
@@ -128,34 +127,77 @@
 <h3 id="id_1-list-available-datasets">1. List Available Datasets<a class="anchor" aria-label="anchor" href="#id_1-list-available-datasets"></a>
 </h3>
 <p>View all official datastreams provided by the SENACE REST API:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/senaceR" class="external-link">senaceR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_list_datasets.html">senace_list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 8 × 3</span></span>
+<span><span class="co">#&gt;   datastream             titulo                                   descripcion   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;                                    &lt;chr&gt;         </span></span>
+<span><span class="co">#&gt; 1 CarteraProyectos       Sustainable Investment Project Portfolio Projects with…</span></span>
+<span><span class="co">#&gt; 2 ConsultorasAmbientales Environmental Consulting Firms Register  Official regi…</span></span>
+<span><span class="co">#&gt; 3 GastoEspecifica        Expenditure by Detailed Classifier       Daily and ann…</span></span>
+<span><span class="co">#&gt; 4 GastoFuente            Expenditure by Funding Source            Budget expend…</span></span>
+<span><span class="co">#&gt; 5 GastoGenerica          Expenditure by Generic Classifier        Budget expend…</span></span>
+<span><span class="co">#&gt; 6 SolicitudAcceso        Public Information Access Requests       Public inform…</span></span>
+<span><span class="co">#&gt; 7 Visitas                Institutional Visits Register            Records of vi…</span></span>
+<span><span class="co">#&gt; 8 Reclamos               Complaints and Claims Register           Complaints an…</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="id_2-download-live-datasets">2. Download Live Datasets<a class="anchor" aria-label="anchor" href="#id_2-download-live-datasets"></a>
 </h3>
 <p>Once your API key is configured, use helper functions to fetch live data:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Retrieve the Sustainable Investment Project Portfolio</span></span>
 <span><span class="va">proyectos</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_cartera_proyectos.html">senace_cartera_proyectos</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proyectos</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 13</span></span>
+<span><span class="co">#&gt;      ID TITULAR            RUC   TITULO_PROYECTO UNIDAD_PROYECTO TIPO  ACTIVIDAD</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;              &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt; 1     7 AUTOPISTA DEL NOR… 2052… "PROYECTO “REH… EVAP PROYECTO … Clas… Transpor…</span></span>
+<span><span class="co">#&gt; 2     2 COMPAÑÍA MINERA P… 2013… "MEIA PARA LA … U.M. SANTA MAR… MEIA… Minería  </span></span>
+<span><span class="co">#&gt; 3     3 COMPAÑÍA MINERA A… 2019… "SEGUNDA MODIF… PALLANCATA      MEIA… Minería  </span></span>
+<span><span class="co">#&gt; 4     4 PROYECTO ESPECIAL… 2027… "IGAPRO PARA L… PROYECTO CONTR… IGAP… Agricult…</span></span>
+<span><span class="co">#&gt; 5     5 DOE RUN PERÚ S.R.… 2037… "IMPLEMENTACIÓ… COBRIZA         ITS   Minería  </span></span>
+<span><span class="co">#&gt; 6     6 COMPAÑIA MINERA S… 2010… "MEIA DEL PROY… SAN VICENTE     MEIA… Minería  </span></span>
+<span><span class="co">#&gt; # ℹ 6 more variables: FECHA_INICIO &lt;chr&gt;, ESTADO &lt;chr&gt;, DESCRIPCION &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   LONGITUD &lt;dbl&gt;, LATITUD &lt;dbl&gt;, RESOLUCION &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="co"># Retrieve the Environmental Consulting Firms Register</span></span>
 <span><span class="va">consultoras</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_consultoras_ambientales.html">senace_consultoras_ambientales</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">consultoras</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 8</span></span>
+<span><span class="co">#&gt;   RAZON_SOCIAL            SUBSECTOR ACTIVIDAD TIPO_SOLICITUD RESOLUCION FECHA_RD</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1 "\" URBANA CONSULTORES… PESCA Y … ACUICULT… MODIFICACIÓN   RD N° 001… 19/12/2…</span></span>
+<span><span class="co">#&gt; 2 "\" URBANA CONSULTORES… SALUD     RESIDUOS… INSCRIPCIÓN    3534-2020… 04/09/2…</span></span>
+<span><span class="co">#&gt; 3 "\" URBANA CONSULTORES… TRANSPOR… TRANSPOR… INSCRIPCIÓN    SENACE-20… 28/10/2…</span></span>
+<span><span class="co">#&gt; 4 "\" URBANA CONSULTORES… MINERIA   MINERIA   INSCRIPCIÓN    SENACE-20… 03/12/2…</span></span>
+<span><span class="co">#&gt; 5 "\" URBANA CONSULTORES… ENERGIA   ELECTRIC… INSCRIPCIÓN    SENACE-20… 28/10/2…</span></span>
+<span><span class="co">#&gt; 6 "\" URBANA CONSULTORES… ENERGIA   HIDROCAR… INSCRIPCIÓN    SENACE-20… 03/12/2…</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: INICIO_VIGENCIA_RD &lt;chr&gt;, FIN_VIGENCIA_RD &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="co"># Retrieve Public Information Access Requests</span></span>
 <span><span class="va">solicitudes</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_solicitudes_acceso.html">senace_solicitudes_acceso</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">solicitudes</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">solicitudes</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 9</span></span>
+<span><span class="co">#&gt;   NRO_EXPEDIENTE NRO_DOC_IDENTIDAD NOMBRE_COMPLETO_CIUDADANO     FECHA_SOLICITUD</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;                         &lt;chr&gt;          </span></span>
+<span><span class="co">#&gt; 1 ""             44031571          RIVERA RIOS LEYDI DIANA SUSE… "31/03/2026   …</span></span>
+<span><span class="co">#&gt; 2 "2026-0000894" 70503356          NEYRA QUIJANDRIA HERNAN FABR… "02/03/2026   …</span></span>
+<span><span class="co">#&gt; 3 "2026-0000889" 75924703          VASQUEZ LIMO MILAGROS GERALD… "28/02/2026   …</span></span>
+<span><span class="co">#&gt; 4 ""             73320307          LÓPEZ JULCARIMA ELSA ELIZABE… "27/02/2026   …</span></span>
+<span><span class="co">#&gt; 5 "2026-0000872" 70509526          ALVAREZ VICAÑO JOCSAN         "27/02/2026   …</span></span>
+<span><span class="co">#&gt; 6 "2026-0000883" 74822818          MUÑOZ GALINDO TERESA DIANA    "27/02/2026   …</span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: SOLICTUD &lt;chr&gt;, OBSERVACION &lt;chr&gt;, FECHA_ATENCION &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   ESTADO_SOLICITUD &lt;chr&gt;, ESTADO_ATENCION &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="id_3-use-bundled-offline-data">3. Use Bundled Offline Data<a class="anchor" aria-label="anchor" href="#id_3-use-bundled-offline-data"></a>
 </h3>
 <p>To work offline or perform fast exploratory analysis without network requests, set <code>offline = TRUE</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load packaged project portfolio snapshot</span></span>
 <span><span class="va">proyectos_offline</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_cartera_proyectos.html">senace_cartera_proyectos</a></span><span class="op">(</span>offline <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -256,8 +298,24 @@
 <h3 id="citing-senacer-and-senace-data">Citing <code>senaceR</code> and SENACE Data<a class="anchor" aria-label="anchor" href="#citing-senacer-and-senace-data"></a>
 </h3>
 <p>To cite <code>senaceR</code> or the underlying SENACE datasets in academic research or reports, run:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"senaceR"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"senaceR"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; To cite package 'senaceR' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Santos Andrade P (2026). _senaceR: Programmatic Access to SENACE Open</span></span>
+<span><span class="co">#&gt;   Data_. R package version 0.1.0, commit</span></span>
+<span><span class="co">#&gt;   3f0f1b7b73fa0f822e0ad0a3e9c3020bad16ecc6,</span></span>
+<span><span class="co">#&gt;   &lt;https://github.com/PaulESantos/senaceR&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {senaceR: Programmatic Access to SENACE Open Data},</span></span>
+<span><span class="co">#&gt;     author = {Paul Efren {Santos Andrade}},</span></span>
+<span><span class="co">#&gt;     year = {2026},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.1.0, commit 3f0f1b7b73fa0f822e0ad0a3e9c3020bad16ecc6},</span></span>
+<span><span class="co">#&gt;     url = {https://github.com/PaulESantos/senaceR},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 </div>
 </div>
