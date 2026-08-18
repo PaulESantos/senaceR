@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Exploring SENACE Datastreams &amp; Offline Mode • senaceR</title>
+<title>Exploring SENACE Datastreams • senaceR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Open_Sans-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/Fira_Code-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Exploring SENACE Datastreams &amp; Offline Mode">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Exploring SENACE Datastreams">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -37,7 +37,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/senaceR.html">Getting Started with senaceR</a></li>
-    <li><a class="dropdown-item" href="../articles/datasets.html">Exploring SENACE Datastreams &amp; Offline Mode</a></li>
+    <li><a class="dropdown-item" href="../articles/datasets.html">Exploring SENACE Datastreams</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -57,7 +57,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Exploring SENACE Datastreams &amp; Offline Mode</h1>
+      <h1>Exploring SENACE Datastreams</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/PaulESantos/senaceR/blob/main/vignettes/datasets.Rmd" class="external-link"><code>vignettes/datasets.Rmd</code></a></small>
@@ -70,8 +70,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>This article explains the dataset architecture of the SENACE Open
-Data Portal, how web portal views map to REST API datastreams, and how
-<code>senaceR</code> manages offline data snapshots.</p>
+Data Portal and how web portal views map to official REST API
+datastreams.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/senaceR" class="external-link">senaceR</a></span><span class="op">)</span></span></code></pre></div>
 <hr>
@@ -230,34 +230,12 @@ the public.</td>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="working-offline-resilient-data-access">Working Offline &amp; Resilient Data Access<a class="anchor" aria-label="anchor" href="#working-offline-resilient-data-access"></a>
+<h2 id="accessing-datastreams-via-api">Accessing Datastreams via API<a class="anchor" aria-label="anchor" href="#accessing-datastreams-via-api"></a>
 </h2>
-<p><code>senaceR</code> incorporates pre-packaged, compressed snapshots
-(<code>.rda</code>) of all 8 datastreams in <code>data/</code>.</p>
-<div class="section level3">
-<h3 id="offline-mode-offline-true">Offline Mode (<code>offline = TRUE</code>)<a class="anchor" aria-label="anchor" href="#offline-mode-offline-true"></a>
-</h3>
-<p>If you are working without an internet connection or require
-reproducible script execution, pass <code>offline = TRUE</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Retrieve packaged snapshots without network calls</span></span>
-<span><span class="va">cartera</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/senace_cartera_proyectos.html">senace_cartera_proyectos</a></span><span class="op">(</span>offline <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">cartera</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 2567   13</span></span>
-<span></span>
-<span><span class="va">consultoras</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/senace_consultoras_ambientales.html">senace_consultoras_ambientales</a></span><span class="op">(</span>offline <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">consultoras</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 14187     8</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="automatic-fallback">Automatic Fallback<a class="anchor" aria-label="anchor" href="#automatic-fallback"></a>
-</h3>
-<p>When <code>offline = FALSE</code> (the default), <code>senaceR</code>
-attempts to fetch live data from the SENACE API. If the API endpoint is
-unreachable or returns an HTTP error, <code>senaceR</code> issues an
-informative warning and loads the bundled local snapshot so your
-analysis can continue uninterrupted.</p>
-</div>
+<p>All helper functions query live endpoints directly using your SENACE
+API key (<code>auth_key</code>). To ensure maximum data accuracy and
+consistency, <code>senaceR</code> focuses strictly on active API
+datastreams rather than cached or local static snapshots.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

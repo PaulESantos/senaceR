@@ -1,10 +1,9 @@
-# Exploring SENACE Datastreams & Offline Mode
+# Exploring SENACE Datastreams
 
 ## Overview
 
 This article explains the dataset architecture of the SENACE Open Data
-Portal, how web portal views map to REST API datastreams, and how
-`senaceR` manages offline data snapshots.
+Portal and how web portal views map to official REST API datastreams.
 
 ``` r
 
@@ -63,31 +62,9 @@ datastreams:
 
 ------------------------------------------------------------------------
 
-## Working Offline & Resilient Data Access
+## Accessing Datastreams via API
 
-`senaceR` incorporates pre-packaged, compressed snapshots (`.rda`) of
-all 8 datastreams in `data/`.
-
-### Offline Mode (`offline = TRUE`)
-
-If you are working without an internet connection or require
-reproducible script execution, pass `offline = TRUE`:
-
-``` r
-
-# Retrieve packaged snapshots without network calls
-cartera <- senace_cartera_proyectos(offline = TRUE)
-dim(cartera)
-#> [1] 2567   13
-
-consultoras <- senace_consultoras_ambientales(offline = TRUE)
-dim(consultoras)
-#> [1] 14187     8
-```
-
-### Automatic Fallback
-
-When `offline = FALSE` (the default), `senaceR` attempts to fetch live
-data from the SENACE API. If the API endpoint is unreachable or returns
-an HTTP error, `senaceR` issues an informative warning and loads the
-bundled local snapshot so your analysis can continue uninterrupted.
+All helper functions query live endpoints directly using your SENACE API
+key (`auth_key`). To ensure maximum data accuracy and consistency,
+`senaceR` focuses strictly on active API datastreams rather than cached
+or local static snapshots.

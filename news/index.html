@@ -20,7 +20,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/senaceR.html">Getting Started with senaceR</a></li>
-    <li><a class="dropdown-item" href="../articles/datasets.html">Exploring SENACE Datastreams &amp; Offline Mode</a></li>
+    <li><a class="dropdown-item" href="../articles/datasets.html">Exploring SENACE Datastreams</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="https://github.com/PaulESantos/senaceR" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -39,8 +39,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="senacer-010">senaceR 0.1.0<a class="anchor" aria-label="anchor" href="#senacer-010"></a></h2>
 <ul><li>Initial release of <code>senaceR</code>.</li>
-<li>Provides programmatic access to the SENACE Open Data Portal REST API in Peru (<a href="https://datosabiertos.senace.gob.pe" class="external-link uri">https://datosabiertos.senace.gob.pe</a>).</li>
-<li>Includes helper functions for 8 core datastreams:
+<li>Provides programmatic access to active datastreams from the SENACE Open Data Portal REST API in Peru (<a href="https://datosabiertos.senace.gob.pe" class="external-link uri">https://datosabiertos.senace.gob.pe</a>).</li>
+<li>Includes helper functions for 8 core active datastreams:
 <ul><li><code><a href="../reference/senace_cartera_proyectos.html">senace_cartera_proyectos()</a></code></li>
 <li><code><a href="../reference/senace_consultoras_ambientales.html">senace_consultoras_ambientales()</a></code></li>
 <li><code><a href="../reference/senace_gastos_especifica.html">senace_gastos_especifica()</a></code></li>
@@ -50,8 +50,7 @@
 <li><code><a href="../reference/senace_visitas.html">senace_visitas()</a></code></li>
 <li><code><a href="../reference/senace_reclamos.html">senace_reclamos()</a></code></li>
 </ul></li>
-<li>Features <code>offline = TRUE</code> parameter for querying pre-packaged datasets offline without network dependencies.</li>
-<li>Includes automatic fallback functionality when live API requests fail.</li>
+<li>Focused exclusively on active REST API data retrieval to guarantee data accuracy and consistency with live SENACE records.</li>
 </ul></div>
   </main></div>
 

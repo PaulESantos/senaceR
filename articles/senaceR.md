@@ -16,8 +16,8 @@ visits, public information requests, and budget execution.
 
 1.  Handling API authentication (`auth_key`).
 2.  Formatting JSON API responses into tidy R `tibble` objects.
-3.  Bundling local data snapshots for offline work and automatic
-    fallback operation.
+3.  Providing direct, up-to-date access to official REST API
+    datastreams.
 
 ------------------------------------------------------------------------
 
@@ -84,9 +84,7 @@ datasets
 
 ## Accessing Datastreams
 
-`senaceR` provides dedicated functions for each datastream. For offline
-exploration or when network access is unavailable, pass
-`offline = TRUE`:
+`senaceR` provides dedicated helper functions for each datastream:
 
 ### 1. Sustainable Investment Project Portfolio
 
@@ -95,19 +93,7 @@ by SENACE:
 
 ``` r
 
-proyectos <- senace_cartera_proyectos(offline = TRUE)
-head(proyectos)
-#> # A tibble: 6 × 13
-#>      ID TITULAR            RUC   TITULO_PROYECTO UNIDAD_PROYECTO TIPO  ACTIVIDAD
-#>   <int> <chr>              <chr> <chr>           <chr>           <chr> <chr>    
-#> 1     7 AUTOPISTA DEL NOR… 2052… "PROYECTO “REH… EVAP PROYECTO … Clas… Transpor…
-#> 2     2 COMPAÑÍA MINERA P… 2013… "MEIA PARA LA … U.M. SANTA MAR… MEIA… Minería  
-#> 3     3 COMPAÑÍA MINERA A… 2019… "SEGUNDA MODIF… PALLANCATA      MEIA… Minería  
-#> 4     4 PROYECTO ESPECIAL… 2027… "IGAPRO PARA L… PROYECTO CONTR… IGAP… Agricult…
-#> 5     5 DOE RUN PERÚ S.R.… 2037… "IMPLEMENTACIÓ… COBRIZA         ITS   Minería  
-#> 6     6 COMPAÑIA MINERA S… 2010… "MEIA DEL PROY… SAN VICENTE     MEIA… Minería  
-#> # ℹ 6 more variables: FECHA_INICIO <chr>, ESTADO <chr>, DESCRIPCION <chr>,
-#> #   LONGITUD <dbl>, LATITUD <dbl>, RESOLUCION <chr>
+proyectos <- senace_cartera_proyectos()
 ```
 
 ### 2. Environmental Consulting Firms Register
@@ -117,18 +103,7 @@ Retrieve authorized environmental consulting firms across all subsectors
 
 ``` r
 
-consultoras <- senace_consultoras_ambientales(offline = TRUE)
-head(consultoras)
-#> # A tibble: 6 × 8
-#>   RAZON_SOCIAL            SUBSECTOR ACTIVIDAD TIPO_SOLICITUD RESOLUCION FECHA_RD
-#>   <chr>                   <chr>     <chr>     <chr>          <chr>      <chr>   
-#> 1 "\" URBANA CONSULTORES… PESCA Y … ACUICULT… MODIFICACIÓN   RD N° 001… 19/12/2…
-#> 2 "\" URBANA CONSULTORES… SALUD     RESIDUOS… INSCRIPCIÓN    3534-2020… 04/09/2…
-#> 3 "\" URBANA CONSULTORES… TRANSPOR… TRANSPOR… INSCRIPCIÓN    SENACE-20… 28/10/2…
-#> 4 "\" URBANA CONSULTORES… MINERIA   MINERIA   INSCRIPCIÓN    SENACE-20… 03/12/2…
-#> 5 "\" URBANA CONSULTORES… ENERGIA   ELECTRIC… INSCRIPCIÓN    SENACE-20… 28/10/2…
-#> 6 "\" URBANA CONSULTORES… ENERGIA   HIDROCAR… INSCRIPCIÓN    SENACE-20… 03/12/2…
-#> # ℹ 2 more variables: INICIO_VIGENCIA_RD <chr>, FIN_VIGENCIA_RD <chr>
+consultoras <- senace_consultoras_ambientales()
 ```
 
 ### 3. Public Information Access Requests
@@ -137,33 +112,7 @@ Track transparency and public information requests submitted to SENACE:
 
 ``` r
 
-solicitudes <- senace_solicitudes_acceso(offline = TRUE)
-head(solicitudes)
-#> # A tibble: 6 × 9
-#>   NRO_EXPEDIENTE NRO_DOC_IDENTIDAD NOMBRE_COMPLETO_CIUDADANO     FECHA_SOLICITUD
-#>   <chr>          <chr>             <chr>                         <chr>          
-#> 1 ""             44031571          RIVERA RIOS LEYDI DIANA SUSE… "31/03/2026   …
-#> 2 "2026-0000894" 70503356          NEYRA QUIJANDRIA HERNAN FABR… "02/03/2026   …
-#> 3 "2026-0000889" 75924703          VASQUEZ LIMO MILAGROS GERALD… "28/02/2026   …
-#> 4 ""             73320307          LÓPEZ JULCARIMA ELSA ELIZABE… "27/02/2026   …
-#> 5 "2026-0000872" 70509526          ALVAREZ VICAÑO JOCSAN         "27/02/2026   …
-#> 6 "2026-0000883" 74822818          MUÑOZ GALINDO TERESA DIANA    "27/02/2026   …
-#> # ℹ 5 more variables: SOLICTUD <chr>, OBSERVACION <chr>, FECHA_ATENCION <chr>,
-#> #   ESTADO_SOLICITUD <chr>, ESTADO_ATENCION <chr>
-```
-
-------------------------------------------------------------------------
-
-## Resilient Offline Fallback
-
-If you query a live dataset (`offline = FALSE`) but the SENACE API
-server is down or unreachable, `senaceR` will automatically issue a
-warning and load the pre-packaged offline snapshot:
-
-``` r
-
-# Automatic fallback if live API fails
-proyectos_live <- senace_cartera_proyectos()
+solicitudes <- senace_solicitudes_acceso()
 ```
 
 ------------------------------------------------------------------------
@@ -172,6 +121,5 @@ proyectos_live <- senace_cartera_proyectos()
 
 `senaceR` streamlines environmental data science workflows in Peru by
 bridging SENACE’s open data portal directly to R data structures. For
-more details on datastream architecture and offline snapshot management,
-see
+more details on datastream architecture, see
 [`vignette("datasets")`](https://paulesantos.github.io/senaceR/articles/datasets.md).

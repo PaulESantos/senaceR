@@ -1,9 +1,5 @@
 # senaceR: Programmatic Access to SENACE Open Data
 
-[![R-CMD-check](https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/senaceR/actions)
-[![License:
-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 `senaceR` provides an R interface to the official [SENACE Open Data
 Portal](https://datosabiertos.senace.gob.pe), operated by Peru’s
 National Service for Environmental Certification of Sustainable
@@ -11,21 +7,16 @@ Investments (*Servicio Nacional de Certificación Ambiental para las
 Inversiones Sostenibles*).
 
 It retrieves official REST API datastreams directly into tidy R data
-structures (`tibble`) and bundles compressed local snapshots for offline
-analysis and resilient fallback operation.
+structures (`tibble`).
 
 ------------------------------------------------------------------------
 
 ## Key Features
 
-- **Direct REST API Integration:** Access SENACE’s live endpoints using
-  your personal API key (`auth_key`).
+- **Direct REST API Integration:** Access SENACE’s active live endpoints
+  using your personal API key (`auth_key`).
 - **Tidy Tabular Data:** All responses are automatically formatted as
   modern `tibble` objects.
-- **Offline & Fallback Mode:** Includes pre-packaged, compressed local
-  datasets (`LazyData`). If the live API is unreachable, `senaceR`
-  gracefully falls back to bundled snapshots with an informative
-  warning.
 - **Unified Datastreams:** Consolidates subdivided web portal views
   (e.g. 10 sector views for consulting firms) into clean, unified master
   datasets.
@@ -119,10 +110,10 @@ print(datasets)
 #> 8 Reclamos               Complaints and Claims Register           Complaints an…
 ```
 
-### 2. Download Live Datasets
+### 2. Download Active Datasets
 
-Once your API key is configured, use helper functions to fetch live
-data:
+Once your API key is configured, use helper functions to fetch active
+data directly from the REST API:
 
 ``` r
 
@@ -149,10 +140,10 @@ head(consultoras)
 #>   <chr>                   <chr>     <chr>     <chr>          <chr>      <chr>   
 #> 1 "\" URBANA CONSULTORES… PESCA Y … ACUICULT… MODIFICACIÓN   RD N° 001… 19/12/2…
 #> 2 "\" URBANA CONSULTORES… SALUD     RESIDUOS… INSCRIPCIÓN    3534-2020… 04/09/2…
-#> 3 "\" URBANA CONSULTORES… TRANSPOR… TRANSPOR… INSCRIPCIÓN    SENACE-20… 28/10/2…
-#> 4 "\" URBANA CONSULTORES… MINERIA   MINERIA   INSCRIPCIÓN    SENACE-20… 03/12/2…
-#> 5 "\" URBANA CONSULTORES… ENERGIA   ELECTRIC… INSCRIPCIÓN    SENACE-20… 28/10/2…
-#> 6 "\" URBANA CONSULTORES… ENERGIA   HIDROCAR… INSCRIPCIÓN    SENACE-20… 03/12/2…
+#> 3 "\" URBANA CONSULTORES… AGRICULT… AGRICULT… INSCRIPCIÓN    SENACE-20… 03/08/2…
+#> 4 "\" URBANA CONSULTORES… TRANSPOR… TRANSPOR… INSCRIPCIÓN    SENACE-20… 28/10/2…
+#> 5 "\" URBANA CONSULTORES… MINERIA   MINERIA   INSCRIPCIÓN    SENACE-20… 03/12/2…
+#> 6 "\" URBANA CONSULTORES… ENERGIA   ELECTRIC… INSCRIPCIÓN    SENACE-20… 28/10/2…
 #> # ℹ 2 more variables: INICIO_VIGENCIA_RD <chr>, FIN_VIGENCIA_RD <chr>
 
 # Retrieve Public Information Access Requests
@@ -170,24 +161,6 @@ head(solicitudes)
 #> # ℹ 5 more variables: SOLICTUD <chr>, OBSERVACION <chr>, FECHA_ATENCION <chr>,
 #> #   ESTADO_SOLICITUD <chr>, ESTADO_ATENCION <chr>
 ```
-
-### 3. Use Bundled Offline Data
-
-To work offline or perform fast exploratory analysis without network
-requests, set `offline = TRUE`:
-
-``` r
-
-# Load packaged project portfolio snapshot
-proyectos_offline <- senace_cartera_proyectos(offline = TRUE)
-
-# Load packaged environmental consulting firms snapshot
-consultoras_offline <- senace_consultoras_ambientales(offline = TRUE)
-```
-
-If `offline = FALSE` (default) and the live SENACE API cannot be
-reached, `senaceR` will automatically issue a warning and load the
-bundled offline snapshot as a resilient fallback.
 
 ------------------------------------------------------------------------
 
@@ -252,20 +225,18 @@ or reports, run:
 ``` r
 
 citation("senaceR")
-#> To cite package 'senaceR' in publications use:
+#> To cite senaceR or the SENACE open data in publications, please use:
 #> 
-#>   Santos Andrade P (2026). _senaceR: Programmatic Access to SENACE Open
-#>   Data_. R package version 0.1.0, commit
-#>   3f0f1b7b73fa0f822e0ad0a3e9c3020bad16ecc6,
-#>   <https://github.com/PaulESantos/senaceR>.
+#>   Santos Andrade, P. E. (2026). senaceR: Programmatic Access to SENACE
+#>   Open Data. R package version 0.1.0. URL:
+#>   https://paulesantos.github.io/senaceR/
 #> 
-#> A BibTeX entry for LaTeX users is
+#>   Servicio Nacional de Certificación Ambiental para las Inversiones
+#>   Sostenibles - SENACE. (2026). Portal de Datos Abiertos del SENACE
+#>   [Data set]. Ministerio del Ambiente, Perú. URL:
+#>   https://datosabiertos.senace.gob.pe/
 #> 
-#>   @Manual{,
-#>     title = {senaceR: Programmatic Access to SENACE Open Data},
-#>     author = {Paul Efren {Santos Andrade}},
-#>     year = {2026},
-#>     note = {R package version 0.1.0, commit 3f0f1b7b73fa0f822e0ad0a3e9c3020bad16ecc6},
-#>     url = {https://github.com/PaulESantos/senaceR},
-#>   }
+#> To see these entries in BibTeX format, use 'print(<citation>,
+#> bibtex=TRUE)', 'toBibtex(.)', or set
+#> 'options(citation.bibtex.max=999)'.
 ```

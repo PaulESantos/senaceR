@@ -15,8 +15,8 @@ Functions for API key management and direct HTTP datastream requests.
 
 ## Datastream Helpers
 
-Convenience functions for fetching SENACE datasets (with offline
-support).
+Convenience functions for fetching active SENACE datasets via the REST
+API.
 
 - [`senace_cartera_proyectos()`](https://paulesantos.github.io/senaceR/reference/senace_cartera_proyectos.md)
   : Retrieve the Sustainable Investment Project Portfolio
@@ -34,24 +34,3 @@ support).
   : Retrieve the Institutional Visits Register
 - [`senace_reclamos()`](https://paulesantos.github.io/senaceR/reference/senace_reclamos.md)
   : Retrieve the Complaints and Claims Register
-
-## Bundled Offline Datasets
-
-Packaged local data objects available for offline analysis.
-
-- [`cartera_proyectos_data`](https://paulesantos.github.io/senaceR/reference/cartera_proyectos_data.md)
-  : Sustainable Investment Project Portfolio (Local Data)
-- [`consultoras_ambientales_data`](https://paulesantos.github.io/senaceR/reference/consultoras_ambientales_data.md)
-  : Environmental Consulting Firms Register (Local Data)
-- [`gasto_especifica_data`](https://paulesantos.github.io/senaceR/reference/gasto_especifica_data.md)
-  : Expenditure by Detailed Classifier (Local Data)
-- [`gasto_fuente_data`](https://paulesantos.github.io/senaceR/reference/gasto_fuente_data.md)
-  : Expenditure by Funding Source (Local Data)
-- [`gasto_generica_data`](https://paulesantos.github.io/senaceR/reference/gasto_generica_data.md)
-  : Expenditure by Generic Classifier (Local Data)
-- [`solicitud_acceso_data`](https://paulesantos.github.io/senaceR/reference/solicitud_acceso_data.md)
-  : Public Information Access Requests (Local Data)
-- [`visitas_data`](https://paulesantos.github.io/senaceR/reference/visitas_data.md)
-  : Institutional Visits Register (Local Data)
-- [`reclamos_data`](https://paulesantos.github.io/senaceR/reference/reclamos_data.md)
-  : Complaints and Claims Register (Local Data)

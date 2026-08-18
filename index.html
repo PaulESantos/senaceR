@@ -13,8 +13,8 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Programmatic Access to SENACE Open Data">
-<meta name="description" content="Provides an R interface for the REST API of the SENACE Open Data Portal (National Service for Environmental Certification of Sustainable Investments) in Peru &lt;https://datosabiertos.senace.gob.pe&gt;. Allows users to download current datasets programmatically using a personal API key or access bundled local snapshots for offline analysis and resilient fallback operation.">
-<meta property="og:description" content="Provides an R interface for the REST API of the SENACE Open Data Portal (National Service for Environmental Certification of Sustainable Investments) in Peru &lt;https://datosabiertos.senace.gob.pe&gt;. Allows users to download current datasets programmatically using a personal API key or access bundled local snapshots for offline analysis and resilient fallback operation.">
+<meta name="description" content="Provides an R interface for the REST API of the SENACE Open Data Portal (National Service for Environmental Certification of Sustainable Investments) in Peru &lt;https://datosabiertos.senace.gob.pe&gt;. Allows users to download current datasets programmatically using a personal API key directly from official active endpoints.">
+<meta property="og:description" content="Provides an R interface for the REST API of the SENACE Open Data Portal (National Service for Environmental Certification of Sustainable Investments) in Peru &lt;https://datosabiertos.senace.gob.pe&gt;. Allows users to download current datasets programmatically using a personal API key directly from official active endpoints.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -39,7 +39,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/senaceR.html">Getting Started with senaceR</a></li>
-    <li><a class="dropdown-item" href="articles/datasets.html">Exploring SENACE Datastreams &amp; Offline Mode</a></li>
+    <li><a class="dropdown-item" href="articles/datasets.html">Exploring SENACE Datastreams</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -56,20 +56,19 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="senacer-programmatic-access-to-senace-open-data">senaceR: Programmatic Access to SENACE Open Data<a class="anchor" aria-label="anchor" href="#senacer-programmatic-access-to-senace-open-data"></a>
 </h1></div>
-<p><a href="https://github.com/PaulESantos/senaceR/actions" class="external-link"><img src="https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
+<!-- badges: start -->
+
 <p><code>senaceR</code> provides an R interface to the official <a href="https://datosabiertos.senace.gob.pe" class="external-link">SENACE Open Data Portal</a>, operated by Peru’s National Service for Environmental Certification of Sustainable Investments (<em>Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles</em>).</p>
-<p>It retrieves official REST API datastreams directly into tidy R data structures (<code>tibble</code>) and bundles compressed local snapshots for offline analysis and resilient fallback operation.</p>
+<p>It retrieves official REST API datastreams directly into tidy R data structures (<code>tibble</code>).</p>
 <hr>
 <div class="section level2">
 <h2 id="key-features">Key Features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
 <li>
-<strong>Direct REST API Integration:</strong> Access SENACE’s live endpoints using your personal API key (<code>auth_key</code>).</li>
+<strong>Direct REST API Integration:</strong> Access SENACE’s active live endpoints using your personal API key (<code>auth_key</code>).</li>
 <li>
 <strong>Tidy Tabular Data:</strong> All responses are automatically formatted as modern <code>tibble</code> objects.</li>
-<li>
-<strong>Offline &amp; Fallback Mode:</strong> Includes pre-packaged, compressed local datasets (<code>LazyData</code>). If the live API is unreachable, <code>senaceR</code> gracefully falls back to bundled snapshots with an informative warning.</li>
 <li>
 <strong>Unified Datastreams:</strong> Consolidates subdivided web portal views (e.g. 10 sector views for consulting firms) into clean, unified master datasets.</li>
 </ul>
@@ -145,9 +144,9 @@
 <span><span class="co">#&gt; 8 Reclamos               Complaints and Claims Register           Complaints an…</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_2-download-live-datasets">2. Download Live Datasets<a class="anchor" aria-label="anchor" href="#id_2-download-live-datasets"></a>
+<h3 id="id_2-download-active-datasets">2. Download Active Datasets<a class="anchor" aria-label="anchor" href="#id_2-download-active-datasets"></a>
 </h3>
-<p>Once your API key is configured, use helper functions to fetch live data:</p>
+<p>Once your API key is configured, use helper functions to fetch active data directly from the REST API:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Retrieve the Sustainable Investment Project Portfolio</span></span>
 <span><span class="va">proyectos</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_cartera_proyectos.html">senace_cartera_proyectos</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -172,10 +171,10 @@
 <span><span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;   </span></span>
 <span><span class="co">#&gt; 1 "\" URBANA CONSULTORES… PESCA Y … ACUICULT… MODIFICACIÓN   RD N° 001… 19/12/2…</span></span>
 <span><span class="co">#&gt; 2 "\" URBANA CONSULTORES… SALUD     RESIDUOS… INSCRIPCIÓN    3534-2020… 04/09/2…</span></span>
-<span><span class="co">#&gt; 3 "\" URBANA CONSULTORES… TRANSPOR… TRANSPOR… INSCRIPCIÓN    SENACE-20… 28/10/2…</span></span>
-<span><span class="co">#&gt; 4 "\" URBANA CONSULTORES… MINERIA   MINERIA   INSCRIPCIÓN    SENACE-20… 03/12/2…</span></span>
-<span><span class="co">#&gt; 5 "\" URBANA CONSULTORES… ENERGIA   ELECTRIC… INSCRIPCIÓN    SENACE-20… 28/10/2…</span></span>
-<span><span class="co">#&gt; 6 "\" URBANA CONSULTORES… ENERGIA   HIDROCAR… INSCRIPCIÓN    SENACE-20… 03/12/2…</span></span>
+<span><span class="co">#&gt; 3 "\" URBANA CONSULTORES… AGRICULT… AGRICULT… INSCRIPCIÓN    SENACE-20… 03/08/2…</span></span>
+<span><span class="co">#&gt; 4 "\" URBANA CONSULTORES… TRANSPOR… TRANSPOR… INSCRIPCIÓN    SENACE-20… 28/10/2…</span></span>
+<span><span class="co">#&gt; 5 "\" URBANA CONSULTORES… MINERIA   MINERIA   INSCRIPCIÓN    SENACE-20… 03/12/2…</span></span>
+<span><span class="co">#&gt; 6 "\" URBANA CONSULTORES… ENERGIA   ELECTRIC… INSCRIPCIÓN    SENACE-20… 28/10/2…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: INICIO_VIGENCIA_RD &lt;chr&gt;, FIN_VIGENCIA_RD &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="co"># Retrieve Public Information Access Requests</span></span>
@@ -192,18 +191,6 @@
 <span><span class="co">#&gt; 6 "2026-0000883" 74822818          MUÑOZ GALINDO TERESA DIANA    "27/02/2026   …</span></span>
 <span><span class="co">#&gt; # ℹ 5 more variables: SOLICTUD &lt;chr&gt;, OBSERVACION &lt;chr&gt;, FECHA_ATENCION &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   ESTADO_SOLICITUD &lt;chr&gt;, ESTADO_ATENCION &lt;chr&gt;</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="id_3-use-bundled-offline-data">3. Use Bundled Offline Data<a class="anchor" aria-label="anchor" href="#id_3-use-bundled-offline-data"></a>
-</h3>
-<p>To work offline or perform fast exploratory analysis without network requests, set <code>offline = TRUE</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load packaged project portfolio snapshot</span></span>
-<span><span class="va">proyectos_offline</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_cartera_proyectos.html">senace_cartera_proyectos</a></span><span class="op">(</span>offline <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Load packaged environmental consulting firms snapshot</span></span>
-<span><span class="va">consultoras_offline</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/senace_consultoras_ambientales.html">senace_consultoras_ambientales</a></span><span class="op">(</span>offline <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>If <code>offline = FALSE</code> (default) and the live SENACE API cannot be reached, <code>senaceR</code> will automatically issue a warning and load the bundled offline snapshot as a resilient fallback.</p>
 <hr>
 </div>
 </div>
@@ -298,24 +285,22 @@
 <h3 id="citing-senacer-and-senace-data">Citing <code>senaceR</code> and SENACE Data<a class="anchor" aria-label="anchor" href="#citing-senacer-and-senace-data"></a>
 </h3>
 <p>To cite <code>senaceR</code> or the underlying SENACE datasets in academic research or reports, run:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"senaceR"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; To cite package 'senaceR' in publications use:</span></span>
+<span><span class="co">#&gt; To cite senaceR or the SENACE open data in publications, please use:</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Santos Andrade P (2026). _senaceR: Programmatic Access to SENACE Open</span></span>
-<span><span class="co">#&gt;   Data_. R package version 0.1.0, commit</span></span>
-<span><span class="co">#&gt;   3f0f1b7b73fa0f822e0ad0a3e9c3020bad16ecc6,</span></span>
-<span><span class="co">#&gt;   &lt;https://github.com/PaulESantos/senaceR&gt;.</span></span>
+<span><span class="co">#&gt;   Santos Andrade, P. E. (2026). senaceR: Programmatic Access to SENACE</span></span>
+<span><span class="co">#&gt;   Open Data. R package version 0.1.0. URL:</span></span>
+<span><span class="co">#&gt;   https://paulesantos.github.io/senaceR/</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt;   Servicio Nacional de Certificación Ambiental para las Inversiones</span></span>
+<span><span class="co">#&gt;   Sostenibles - SENACE. (2026). Portal de Datos Abiertos del SENACE</span></span>
+<span><span class="co">#&gt;   [Data set]. Ministerio del Ambiente, Perú. URL:</span></span>
+<span><span class="co">#&gt;   https://datosabiertos.senace.gob.pe/</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   @Manual{,</span></span>
-<span><span class="co">#&gt;     title = {senaceR: Programmatic Access to SENACE Open Data},</span></span>
-<span><span class="co">#&gt;     author = {Paul Efren {Santos Andrade}},</span></span>
-<span><span class="co">#&gt;     year = {2026},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.1.0, commit 3f0f1b7b73fa0f822e0ad0a3e9c3020bad16ecc6},</span></span>
-<span><span class="co">#&gt;     url = {https://github.com/PaulESantos/senaceR},</span></span>
-<span><span class="co">#&gt;   }</span></span></code></pre></div>
+<span><span class="co">#&gt; To see these entries in BibTeX format, use 'print(&lt;citation&gt;,</span></span>
+<span><span class="co">#&gt; bibtex=TRUE)', 'toBibtex(.)', or set</span></span>
+<span><span class="co">#&gt; 'options(citation.bibtex.max=999)'.</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -351,7 +336,14 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
