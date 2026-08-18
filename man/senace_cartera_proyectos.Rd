@@ -4,20 +4,19 @@
 \alias{senace_cartera_proyectos}
 \title{Retrieve the Sustainable Investment Project Portfolio}
 \usage{
-senace_cartera_proyectos(api_key = NULL, offline = FALSE)
+senace_cartera_proyectos(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads the SENACE project portfolio or retrieves its bundled local snapshot.
+Downloads the SENACE project portfolio from the REST API.
 }
 \examples{
-senace_cartera_proyectos(offline = TRUE)
+\dontrun{
+senace_cartera_proyectos()
+}
 }

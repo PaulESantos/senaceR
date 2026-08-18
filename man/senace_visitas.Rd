@@ -4,21 +4,19 @@
 \alias{senace_visitas}
 \title{Retrieve the Institutional Visits Register}
 \usage{
-senace_visitas(api_key = NULL, offline = FALSE)
+senace_visitas(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads records of visits to SENACE offices or retrieves their bundled local
-snapshot.
+Downloads records of visits to SENACE offices from the REST API.
 }
 \examples{
-senace_visitas(offline = TRUE)
+\dontrun{
+senace_visitas()
+}
 }

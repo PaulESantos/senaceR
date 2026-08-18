@@ -4,21 +4,19 @@
 \alias{senace_gastos_fuente}
 \title{Retrieve expenditure by funding source}
 \usage{
-senace_gastos_fuente(api_key = NULL, offline = FALSE)
+senace_gastos_fuente(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads budget expenditure summarized by funding source or retrieves its
-bundled local snapshot.
+Downloads budget expenditure summarized by funding source from the REST API.
 }
 \examples{
-senace_gastos_fuente(offline = TRUE)
+\dontrun{
+senace_gastos_fuente()
+}
 }

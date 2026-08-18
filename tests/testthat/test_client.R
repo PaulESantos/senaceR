@@ -37,10 +37,22 @@ test_that("Client functions validate arguments", {
   expect_error(senace_set_key(""), "API key must be")
 })
 
-test_that("Offline fallback fails gracefully if data is missing", {
-  # We test the helper function directly
-  expect_error(
-    get_package_dataset("Reclamos", "non_existent_data_var", "key", offline = TRUE),
-    "is not available"
-  )
+test_that("Dataset helper functions forward api_key to senace_get_data", {
+  old_key <- Sys.getenv("SENACE_API_KEY", unset = NA)
+  Sys.unsetenv("SENACE_API_KEY")
+  options(senace.api_key = NULL)
+  
+  # Without API key set, calling dataset helpers should fail at API key validation
+  expect_error(senace_cartera_proyectos(), "No SENACE API key was found")
+  expect_error(senace_consultoras_ambientales(), "No SENACE API key was found")
+  expect_error(senace_gastos_especifica(), "No SENACE API key was found")
+  expect_error(senace_gastos_fuente(), "No SENACE API key was found")
+  expect_error(senace_gastos_generica(), "No SENACE API key was found")
+  expect_error(senace_solicitudes_acceso(), "No SENACE API key was found")
+  expect_error(senace_visitas(), "No SENACE API key was found")
+  expect_error(senace_reclamos(), "No SENACE API key was found")
+  
+  if (!is.na(old_key)) {
+    Sys.setenv(SENACE_API_KEY = old_key)
+  }
 })

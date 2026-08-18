@@ -4,21 +4,19 @@
 \alias{senace_gastos_especifica}
 \title{Retrieve expenditure by detailed classifier}
 \usage{
-senace_gastos_especifica(api_key = NULL, offline = FALSE)
+senace_gastos_especifica(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads detailed budget expenditure data or retrieves its bundled local
-snapshot.
+Downloads detailed budget expenditure data from the REST API.
 }
 \examples{
-senace_gastos_especifica(offline = TRUE)
+\dontrun{
+senace_gastos_especifica()
+}
 }

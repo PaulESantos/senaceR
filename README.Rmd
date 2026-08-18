@@ -15,20 +15,22 @@ knitr::opts_chunk$set(
 
 # senaceR: Programmatic Access to SENACE Open Data
 
-[![R-CMD-check](https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/senaceR/actions)
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/senaceR/actions/workflows/R-CMD-check.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- badges: end -->
 
 `senaceR` provides an R interface to the official [SENACE Open Data Portal](https://datosabiertos.senace.gob.pe), operated by Peru's National Service for Environmental Certification of Sustainable Investments (*Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles*). 
 
-It retrieves official REST API datastreams directly into tidy R data structures (`tibble`) and bundles compressed local snapshots for offline analysis and resilient fallback operation.
+It retrieves official REST API datastreams directly into tidy R data structures (`tibble`).
 
 ---
 
 ## Key Features
 
-- **Direct REST API Integration:** Access SENACE's live endpoints using your personal API key (`auth_key`).
+- **Direct REST API Integration:** Access SENACE's active live endpoints using your personal API key (`auth_key`).
 - **Tidy Tabular Data:** All responses are automatically formatted as modern `tibble` objects.
-- **Offline & Fallback Mode:** Includes pre-packaged, compressed local datasets (`LazyData`). If the live API is unreachable, `senaceR` gracefully falls back to bundled snapshots with an informative warning.
 - **Unified Datastreams:** Consolidates subdivided web portal views (e.g. 10 sector views for consulting firms) into clean, unified master datasets.
 
 ---
@@ -97,11 +99,11 @@ datasets <- senace_list_datasets()
 print(datasets)
 ```
 
-### 2. Download Live Datasets
+### 2. Download Active Datasets
 
-Once your API key is configured, use helper functions to fetch live data:
+Once your API key is configured, use helper functions to fetch active data directly from the REST API:
 
-```{r live-data}
+```{r}
 # Retrieve the Sustainable Investment Project Portfolio
 proyectos <- senace_cartera_proyectos()
 head(proyectos)
@@ -114,20 +116,6 @@ head(consultoras)
 solicitudes <- senace_solicitudes_acceso()
 head(solicitudes)
 ```
-
-### 3. Use Bundled Offline Data
-
-To work offline or perform fast exploratory analysis without network requests, set `offline = TRUE`:
-
-```{r offline-data}
-# Load packaged project portfolio snapshot
-proyectos_offline <- senace_cartera_proyectos(offline = TRUE)
-
-# Load packaged environmental consulting firms snapshot
-consultoras_offline <- senace_consultoras_ambientales(offline = TRUE)
-```
-
-If `offline = FALSE` (default) and the live SENACE API cannot be reached, `senaceR` will automatically issue a warning and load the bundled offline snapshot as a resilient fallback.
 
 ---
 
@@ -173,4 +161,3 @@ To cite `senaceR` or the underlying SENACE datasets in academic research or repo
 ```{r}
 citation("senaceR")
 ```
-

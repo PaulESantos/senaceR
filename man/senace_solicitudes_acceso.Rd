@@ -4,21 +4,19 @@
 \alias{senace_solicitudes_acceso}
 \title{Retrieve public information access requests}
 \usage{
-senace_solicitudes_acceso(api_key = NULL, offline = FALSE)
+senace_solicitudes_acceso(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads public information access requests or retrieves their bundled local
-snapshot.
+Downloads public information access requests from the REST API.
 }
 \examples{
-senace_solicitudes_acceso(offline = TRUE)
+\dontrun{
+senace_solicitudes_acceso()
+}
 }

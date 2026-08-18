@@ -4,21 +4,20 @@
 \alias{senace_consultoras_ambientales}
 \title{Retrieve the Environmental Consulting Firms Register}
 \usage{
-senace_consultoras_ambientales(api_key = NULL, offline = FALSE)
+senace_consultoras_ambientales(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
 Downloads the register of environmental consulting firms authorized by SENACE
-or retrieves its bundled local snapshot.
+from the REST API.
 }
 \examples{
-senace_consultoras_ambientales(offline = TRUE)
+\dontrun{
+senace_consultoras_ambientales()
+}
 }

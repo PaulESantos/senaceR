@@ -4,21 +4,19 @@
 \alias{senace_reclamos}
 \title{Retrieve the Complaints and Claims Register}
 \usage{
-senace_reclamos(api_key = NULL, offline = FALSE)
+senace_reclamos(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads complaints and claims submitted by the public or retrieves their
-bundled local snapshot.
+Downloads complaints and claims submitted by the public from the REST API.
 }
 \examples{
-senace_reclamos(offline = TRUE)
+\dontrun{
+senace_reclamos()
+}
 }

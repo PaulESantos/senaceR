@@ -1,154 +1,128 @@
 #' Retrieve the Sustainable Investment Project Portfolio
 #'
-#' Downloads the SENACE project portfolio or retrieves its bundled local snapshot.
+#' Downloads the SENACE project portfolio from the REST API.
 #'
 #' @param api_key A SENACE API key. If `NULL`, it is retrieved automatically.
-#' @param offline If `TRUE`, use the dataset bundled with the package instead of
-#'   querying the API.
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_cartera_proyectos(offline = TRUE)
-senace_cartera_proyectos <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("CarteraProyectos", "cartera_proyectos_data", api_key, offline)
+#' \dontrun{
+#' senace_cartera_proyectos()
+#' }
+senace_cartera_proyectos <- function(api_key = NULL) {
+  senace_get_data("CarteraProyectos", api_key = api_key)
 }
 
 #' Retrieve the Environmental Consulting Firms Register
 #'
 #' Downloads the register of environmental consulting firms authorized by SENACE
-#' or retrieves its bundled local snapshot.
+#' from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_consultoras_ambientales(offline = TRUE)
-senace_consultoras_ambientales <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("ConsultorasAmbientales", "consultoras_ambientales_data", api_key, offline)
+#' \dontrun{
+#' senace_consultoras_ambientales()
+#' }
+senace_consultoras_ambientales <- function(api_key = NULL) {
+  senace_get_data("ConsultorasAmbientales", api_key = api_key)
 }
 
 #' Retrieve expenditure by detailed classifier
 #'
-#' Downloads detailed budget expenditure data or retrieves its bundled local
-#' snapshot.
+#' Downloads detailed budget expenditure data from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_gastos_especifica(offline = TRUE)
-senace_gastos_especifica <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("GastoEspecifica", "gasto_especifica_data", api_key, offline)
+#' \dontrun{
+#' senace_gastos_especifica()
+#' }
+senace_gastos_especifica <- function(api_key = NULL) {
+  senace_get_data("GastoEspecifica", api_key = api_key)
 }
 
 #' Retrieve expenditure by funding source
 #'
-#' Downloads budget expenditure summarized by funding source or retrieves its
-#' bundled local snapshot.
+#' Downloads budget expenditure summarized by funding source from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_gastos_fuente(offline = TRUE)
-senace_gastos_fuente <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("GastoFuente", "gasto_fuente_data", api_key, offline)
+#' \dontrun{
+#' senace_gastos_fuente()
+#' }
+senace_gastos_fuente <- function(api_key = NULL) {
+  senace_get_data("GastoFuente", api_key = api_key)
 }
 
 #' Retrieve expenditure by generic classifier
 #'
-#' Downloads budget expenditure by generic classifier or retrieves its bundled
-#' local snapshot.
+#' Downloads budget expenditure by generic classifier from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_gastos_generica(offline = TRUE)
-senace_gastos_generica <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("GastoGenerica", "gasto_generica_data", api_key, offline)
+#' \dontrun{
+#' senace_gastos_generica()
+#' }
+senace_gastos_generica <- function(api_key = NULL) {
+  senace_get_data("GastoGenerica", api_key = api_key)
 }
 
 #' Retrieve public information access requests
 #'
-#' Downloads public information access requests or retrieves their bundled local
-#' snapshot.
+#' Downloads public information access requests from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_solicitudes_acceso(offline = TRUE)
-senace_solicitudes_acceso <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("SolicitudAcceso", "solicitud_acceso_data", api_key, offline)
+#' \dontrun{
+#' senace_solicitudes_acceso()
+#' }
+senace_solicitudes_acceso <- function(api_key = NULL) {
+  senace_get_data("SolicitudAcceso", api_key = api_key)
 }
 
 #' Retrieve the Institutional Visits Register
 #'
-#' Downloads records of visits to SENACE offices or retrieves their bundled local
-#' snapshot.
+#' Downloads records of visits to SENACE offices from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_visitas(offline = TRUE)
-senace_visitas <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("Visitas", "visitas_data", api_key, offline)
+#' \dontrun{
+#' senace_visitas()
+#' }
+senace_visitas <- function(api_key = NULL) {
+  senace_get_data("Visitas", api_key = api_key)
 }
 
 #' Retrieve the Complaints and Claims Register
 #'
-#' Downloads complaints and claims submitted by the public or retrieves their
-#' bundled local snapshot.
+#' Downloads complaints and claims submitted by the public from the REST API.
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
 #' @return A tibble.
 #' @export
 #' @examples
-#' senace_reclamos(offline = TRUE)
-senace_reclamos <- function(api_key = NULL, offline = FALSE) {
-  get_package_dataset("Reclamos", "reclamos_data", api_key, offline)
-}
-
-# Internal helper that retrieves an online dataset or its local snapshot.
-get_package_dataset <- function(guid, dataset_var, api_key, offline) {
-  ns_name <- "senaceR"
-  
-  if (offline) {
-    if (exists(dataset_var, envir = asNamespace(ns_name))) {
-      return(get(dataset_var, envir = asNamespace(ns_name)))
-    } else {
-      stop(
-        paste0("The bundled dataset '", dataset_var, "' is not available. ",
-               "Set `offline = FALSE` and provide an active API key to download it."),
-        call. = FALSE
-      )
-    }
-  }
-  
-  # Try the live endpoint first.
-  tryCatch({
-    senace_get_data(guid, api_key = api_key)
-  }, error = function(e) {
-    # Fall back to the bundled snapshot when available.
-    if (exists(dataset_var, envir = asNamespace(ns_name))) {
-      warning(
-        paste0("Could not connect to the live SENACE API (", e$message, "). ",
-               "Returning the bundled local snapshot."),
-        call. = FALSE
-      )
-      return(get(dataset_var, envir = asNamespace(ns_name)))
-    } else {
-      stop(e$message, call. = FALSE)
-    }
-  })
+#' \dontrun{
+#' senace_reclamos()
+#' }
+senace_reclamos <- function(api_key = NULL) {
+  senace_get_data("Reclamos", api_key = api_key)
 }

@@ -24,7 +24,7 @@ Through its REST API, SENACE exposes datasets covering environmental certificati
 
 1. Handling API authentication (`auth_key`).
 2. Formatting JSON API responses into tidy R `tibble` objects.
-3. Bundling local data snapshots for offline work and automatic fallback operation.
+3. Providing direct, up-to-date access to official REST API datastreams.
 
 ---
 
@@ -74,48 +74,34 @@ datasets
 
 ## Accessing Datastreams
 
-`senaceR` provides dedicated functions for each datastream. For offline exploration or when network access is unavailable, pass `offline = TRUE`:
+`senaceR` provides dedicated helper functions for each datastream:
 
 ### 1. Sustainable Investment Project Portfolio
 
 Retrieve the complete status of environmental impact studies evaluated by SENACE:
 
-```{r cartera}
-proyectos <- senace_cartera_proyectos(offline = TRUE)
-head(proyectos)
+```r
+proyectos <- senace_cartera_proyectos()
 ```
 
 ### 2. Environmental Consulting Firms Register
 
 Retrieve authorized environmental consulting firms across all subsectors (Energy, Mining, Transport, Agriculture, etc.):
 
-```{r consultoras}
-consultoras <- senace_consultoras_ambientales(offline = TRUE)
-head(consultoras)
+```r
+consultoras <- senace_consultoras_ambientales()
 ```
 
 ### 3. Public Information Access Requests
 
 Track transparency and public information requests submitted to SENACE:
 
-```{r solicitudes}
-solicitudes <- senace_solicitudes_acceso(offline = TRUE)
-head(solicitudes)
-```
-
----
-
-## Resilient Offline Fallback
-
-If you query a live dataset (`offline = FALSE`) but the SENACE API server is down or unreachable, `senaceR` will automatically issue a warning and load the pre-packaged offline snapshot:
-
 ```r
-# Automatic fallback if live API fails
-proyectos_live <- senace_cartera_proyectos()
+solicitudes <- senace_solicitudes_acceso()
 ```
 
 ---
 
 ## Conclusion
 
-`senaceR` streamlines environmental data science workflows in Peru by bridging SENACE's open data portal directly to R data structures. For more details on datastream architecture and offline snapshot management, see `vignette("datasets")`.
+`senaceR` streamlines environmental data science workflows in Peru by bridging SENACE's open data portal directly to R data structures. For more details on datastream architecture, see `vignette("datasets")`.

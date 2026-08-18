@@ -35,7 +35,7 @@ navbar:
       menu:
         - text: "Getting Started with senaceR"
           href: articles/senaceR.html
-        - text: "Exploring SENACE Datastreams & Offline Mode"
+        - text: "Exploring SENACE Datastreams"
           href: articles/datasets.html
     reference:
       text: "Reference"
@@ -57,7 +57,7 @@ reference:
       - senace_get_data
       - senace_list_datasets
   - title: "Datastream Helpers"
-    desc: "Convenience functions for fetching SENACE datasets (with offline support)."
+    desc: "Convenience functions for fetching active SENACE datasets via the REST API."
     contents:
       - senace_cartera_proyectos
       - senace_consultoras_ambientales
@@ -67,14 +67,3 @@ reference:
       - senace_solicitudes_acceso
       - senace_visitas
       - senace_reclamos
-  - title: "Bundled Offline Datasets"
-    desc: "Packaged local data objects available for offline analysis."
-    contents:
-      - cartera_proyectos_data
-      - consultoras_ambientales_data
-      - gasto_especifica_data
-      - gasto_fuente_data
-      - gasto_generica_data
-      - solicitud_acceso_data
-      - visitas_data
-      - reclamos_data

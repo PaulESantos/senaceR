@@ -4,21 +4,19 @@
 \alias{senace_gastos_generica}
 \title{Retrieve expenditure by generic classifier}
 \usage{
-senace_gastos_generica(api_key = NULL, offline = FALSE)
+senace_gastos_generica(api_key = NULL)
 }
 \arguments{
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
-
-\item{offline}{If \code{TRUE}, use the dataset bundled with the package instead of
-querying the API.}
 }
 \value{
 A tibble.
 }
 \description{
-Downloads budget expenditure by generic classifier or retrieves its bundled
-local snapshot.
+Downloads budget expenditure by generic classifier from the REST API.
 }
 \examples{
-senace_gastos_generica(offline = TRUE)
+\dontrun{
+senace_gastos_generica()
+}
 }
