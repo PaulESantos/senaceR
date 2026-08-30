@@ -16,7 +16,7 @@ senace_solicitudes_acceso(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with public information access requests and status.
 
 ## Examples
 

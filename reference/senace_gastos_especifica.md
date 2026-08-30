@@ -16,7 +16,8 @@ senace_gastos_especifica(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with daily and annual budget expenditure records by detailed
+classifier.
 
 ## Examples
 

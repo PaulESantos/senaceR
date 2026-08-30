@@ -17,7 +17,8 @@ senace_consultoras_ambientales(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with authorized environmental consulting firm records across
+all subsectors.
 
 ## Examples
 

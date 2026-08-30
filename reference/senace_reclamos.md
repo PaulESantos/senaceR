@@ -17,7 +17,7 @@ senace_reclamos(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with complaints and claims submitted by the public.
 
 ## Examples
 

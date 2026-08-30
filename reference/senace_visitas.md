@@ -16,7 +16,7 @@ senace_visitas(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with visitor and institutional meeting records.
 
 ## Examples
 

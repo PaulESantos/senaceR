@@ -16,7 +16,7 @@ senace_gastos_generica(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with budget expenditure records grouped by generic classifier.
 
 ## Examples
 

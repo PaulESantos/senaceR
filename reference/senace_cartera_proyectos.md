@@ -16,7 +16,7 @@ senace_cartera_proyectos(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with project portfolio records and evaluation status.
 
 ## Examples
 

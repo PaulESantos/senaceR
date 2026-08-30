@@ -17,7 +17,7 @@ senace_gastos_fuente(api_key = NULL)
 
 ## Value
 
-A tibble.
+A tibble with budget expenditure records summarized by funding source.
 
 ## Examples
 
