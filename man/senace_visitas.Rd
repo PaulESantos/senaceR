@@ -10,7 +10,7 @@ senace_visitas(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with visitor and institutional meeting records.
 }
 \description{
 Downloads records of visits to SENACE offices from the REST API.

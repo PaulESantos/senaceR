@@ -10,7 +10,10 @@ Description: Provides an 'R' interface for the REST API of the 'SENACE' Open Dat
     Portal (National Service for Environmental Certification of Sustainable 
     Investments) in Peru <https://datosabiertos.senace.gob.pe>. Allows users to 
     download current datasets programmatically using a personal API key directly 
-    from official active endpoints.
+    from official active endpoints. Includes helper functions for retrieving 
+    project portfolios, authorized environmental consulting firm registers, 
+    public information access requests, and detailed institutional budget 
+    expenditure records.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -20,9 +23,11 @@ Imports:
     httr2,
     jsonlite,
     tibble
+Language: en-US
 Suggests: 
     knitr,
     rmarkdown,
+    spelling,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3

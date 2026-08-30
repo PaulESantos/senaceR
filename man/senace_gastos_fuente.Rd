@@ -10,7 +10,7 @@ senace_gastos_fuente(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with budget expenditure records summarized by funding source.
 }
 \description{
 Downloads budget expenditure summarized by funding source from the REST API.

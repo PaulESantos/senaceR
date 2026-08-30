@@ -1,6 +1,15 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.agents$
+^\.agents
 ^.*\.metadata\.json$
 ^data-raw$
 ^test_.*\.R$
+^\.github
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^row-data$
+^README\.Rmd$
+^README\.html$
+^cran-comments\.md$
+^.agents$

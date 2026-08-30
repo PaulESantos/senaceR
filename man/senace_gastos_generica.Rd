@@ -10,7 +10,7 @@ senace_gastos_generica(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with budget expenditure records grouped by generic classifier.
 }
 \description{
 Downloads budget expenditure by generic classifier from the REST API.

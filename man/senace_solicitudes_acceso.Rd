@@ -10,7 +10,7 @@ senace_solicitudes_acceso(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with public information access requests and status.
 }
 \description{
 Downloads public information access requests from the REST API.

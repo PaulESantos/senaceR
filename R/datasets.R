@@ -4,7 +4,7 @@
 #'
 #' @param api_key A SENACE API key. If `NULL`, it is retrieved automatically.
 #'
-#' @return A tibble.
+#' @return A tibble with project portfolio records and evaluation status.
 #' @export
 #' @examples
 #' \dontrun{
@@ -21,7 +21,7 @@ senace_cartera_proyectos <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with authorized environmental consulting firm records across all subsectors.
 #' @export
 #' @examples
 #' \dontrun{
@@ -37,7 +37,7 @@ senace_consultoras_ambientales <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with daily and annual budget expenditure records by detailed classifier.
 #' @export
 #' @examples
 #' \dontrun{
@@ -53,7 +53,7 @@ senace_gastos_especifica <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with budget expenditure records summarized by funding source.
 #' @export
 #' @examples
 #' \dontrun{
@@ -69,7 +69,7 @@ senace_gastos_fuente <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with budget expenditure records grouped by generic classifier.
 #' @export
 #' @examples
 #' \dontrun{
@@ -85,7 +85,7 @@ senace_gastos_generica <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with public information access requests and status.
 #' @export
 #' @examples
 #' \dontrun{
@@ -101,7 +101,7 @@ senace_solicitudes_acceso <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with visitor and institutional meeting records.
 #' @export
 #' @examples
 #' \dontrun{
@@ -117,7 +117,7 @@ senace_visitas <- function(api_key = NULL) {
 #'
 #' @inheritParams senace_cartera_proyectos
 #'
-#' @return A tibble.
+#' @return A tibble with complaints and claims submitted by the public.
 #' @export
 #' @examples
 #' \dontrun{
@@ -126,3 +126,4 @@ senace_visitas <- function(api_key = NULL) {
 senace_reclamos <- function(api_key = NULL) {
   senace_get_data("Reclamos", api_key = api_key)
 }
+

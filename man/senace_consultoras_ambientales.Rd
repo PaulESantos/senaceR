@@ -10,7 +10,7 @@ senace_consultoras_ambientales(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with authorized environmental consulting firm records across all subsectors.
 }
 \description{
 Downloads the register of environmental consulting firms authorized by SENACE

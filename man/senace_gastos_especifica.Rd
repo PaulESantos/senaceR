@@ -10,7 +10,7 @@ senace_gastos_especifica(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with daily and annual budget expenditure records by detailed classifier.
 }
 \description{
 Downloads detailed budget expenditure data from the REST API.

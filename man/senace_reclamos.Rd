@@ -10,7 +10,7 @@ senace_reclamos(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with complaints and claims submitted by the public.
 }
 \description{
 Downloads complaints and claims submitted by the public from the REST API.

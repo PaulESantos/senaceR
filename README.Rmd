@@ -40,7 +40,7 @@ It retrieves official REST API datastreams directly into tidy R data structures 
 You can install the released version of `senaceR` from CRAN with:
 
 ```r
-# install.packages("senaceR")
+install.packages("senaceR")
 ```
 
 Or install the development version from GitHub:
@@ -148,7 +148,8 @@ While the SENACE Web Portal lists **22 items** in its online catalog, the offici
 ## License & Data Attribution
 
 ### Software License
-The `senaceR` package source code is licensed under the [MIT License](LICENSE).
+The `senaceR` package source code is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
 
 ### Data Source & Terms of Use
 The datasets accessed through this package are published by the **Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles (SENACE)** of Peru via its official Open Data Portal ([https://datosabiertos.senace.gob.pe](https://datosabiertos.senace.gob.pe)). 

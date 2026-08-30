@@ -10,7 +10,7 @@ senace_cartera_proyectos(api_key = NULL)
 \item{api_key}{A SENACE API key. If \code{NULL}, it is retrieved automatically.}
 }
 \value{
-A tibble.
+A tibble with project portfolio records and evaluation status.
 }
 \description{
 Downloads the SENACE project portfolio from the REST API.
