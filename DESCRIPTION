@@ -3,10 +3,10 @@ Title: Programmatic Access to SENACE Open Data
 Version: 0.1.0
 Authors@R: c(
     person("Paul Efren", "Santos Andrade",
-    email = "paulfrenes@gmail.com",
+    email = "paulefrens@gmail.com",
     role = c("aut", "cre", "cph"))
   )
-Description: Provides an 'R' interface for the REST API of the 'SENACE' Open Data 
+Description: Provides an 'R' interface for the REST API of the SENACE Open Data 
     Portal (National Service for Environmental Certification of Sustainable 
     Investments) in Peru <https://datosabiertos.senace.gob.pe>. Allows users to 
     download current datasets programmatically using a personal API key directly 
@@ -31,6 +31,6 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 URL: https://github.com/PaulESantos/senaceR, https://paulesantos.github.io/senaceR/
 BugReports: https://github.com/PaulESantos/senaceR/issues
